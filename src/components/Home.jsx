@@ -1,9 +1,11 @@
 // Home.jsx
 
+import Slider from "./Slider";
+
 const Home = () => {
     return (
         <>
-            Home
+            <Slider/>
         </>
     );
 };
