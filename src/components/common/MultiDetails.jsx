@@ -1,9 +1,21 @@
-import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const images = [
+const products = [
+
     {
-        url:'https://m.media-amazon.com/images/I/418lXvhdnrL.jpg',
+        id: 13,
+        name: 'Basic Tee',
+        url: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
+        imageAlt: "Front of men's Basic Tee in black.",
+        paragraph: 'Extra 15% Off Now',
+        desc: "jAWHDIRDMNwuqi    nmwfrbjhrknd w wejk krwerkh  qhrk   k e jw kwe  hkl     bekl  ewf b",
+        brand: 'Sport',
+        rating: '4.5',
+        price: '35',
+        color: 'Black',
+    },
+    {
+        url: 'https://m.media-amazon.com/images/I/418lXvhdnrL.jpg',
         name: 'MRF Bat',
         paragraph: 'Extra 15% Off Now',
         brand: 'Sport',
@@ -15,7 +27,6 @@ const images = [
 
 
     },
-    
     {
         url: 'https://www.gonoise.com/cdn/shop/files/5_e4fa5b99-a083-498f-809a-977a94826ad2.png?v=1694430241',
         name: 'Noise Buds',
@@ -41,7 +52,7 @@ const images = [
 
     },
     {
-        url:'https://www.venushomeappliances.com/storage/app/product/6e4473c0-1c84-11ee-9e7e-c778ba8f1c14/20230707060124adorna-image-0.png',
+        url: 'https://www.venushomeappliances.com/storage/app/product/6e4473c0-1c84-11ee-9e7e-c778ba8f1c14/20230707060124adorna-image-0.png',
         name: 'Fan',
         paragraph: 'Extra 14% Off Now',
         brand: 'Electronics',
@@ -70,7 +81,7 @@ const images = [
         paragraph: 'Extra 35% Off Now',
         brand: 'Electronics',
         desc: "jAWHDIRDMNwuqi    nmwfrbjhrknd w wejk krwerkh  qhrk   k e jw kwe  hkl     bekl  ewf b",
-        price: '24999',
+        price: '21999',
         discount: '90',
         rating: '4.5',
         id: 6,
@@ -148,14 +159,9 @@ const images = [
         id: 12,
 
     },
-    // Add more images to the array
-];
+]
 
-const Slider = () => {
-    const [visibleImages, setVisibleImages] = useState(images);
-    const [transition, setTransition] = useState(true);
-    const [time,settime]=useState('');
-    const intervalRef = useRef(null);
+export default function MultiDetails() {
     const navigate = useNavigate();
 
     const navigateToNextPage = (image) => {
@@ -165,101 +171,37 @@ const Slider = () => {
                 imageData: image,
             },
         });
-        window.scrollTo(0,0) ;
+        window.scrollTo(0, 0);
     };
-
-    const startAutoSlide = () => {
-        stopAutoSlide();
-        intervalRef.current = setInterval(() => {
-            nextSlide();
-        }, 3000);
-    };
-
-    const stopAutoSlide = () => {
-        if (intervalRef.current) {
-            clearInterval(intervalRef.current);
-        }
-    };
-
-    useEffect(() => {
-        startAutoSlide();
-        timechange();
-        return () => stopAutoSlide();
-    }, []);
-
-    const nextSlide = () => {
-        setTransition(true);
-        setVisibleImages((prevImages) => {
-            const [firstImage, ...restImages] = prevImages;
-            return [...restImages, firstImage];
-        });
-    };
-
-    const prevSlide = () => {
-        setTransition(true);
-        setVisibleImages((prevImages) => {
-            const lastImage = prevImages[prevImages.length - 1];
-            return [lastImage, ...prevImages.slice(0, -1)];
-        });
-    };
-
-    const handleTransitionEnd = () => {
-        setTransition(false);
-    };
-
-    const timechange=()=>{
-        setInterval(()=>{
-            var time=new Date();
-            settime(time.toLocaleTimeString());
-        },1000)
-    }
-
     return (
-        <div className="container-fluid p-2" style={{ position:'relative', top:'-50px'}}  >
-            <div className="bg-white p-4 rounded shadow-sm">
-                <div className="grid grid-cols-2 md:grid-cols-2 sm:grid-cols-2 p-2  ">
-                    <div className='text-2xl font-bold offer-heading'>
-                        Offers for todays up to <span className='text-green-500'>60%</span> Off 
-                    </div>
-                    <div className='text-end'>
-                        <button className='bg-blue-400 text-white ps-4 pe-4 p-2 rounded viewall hover:bg-blue-500 ' >VIEW ALL</button>
-                    </div>
-                </div>
-                <div className="relative w-full h-auto overflow-hidden p-4">
-                    <div
-                        className={`flex ${transition ? 'transition-transform duration-500' : ''}`}
-                        style={{ transform: `translateX(-10%)` }}
-                        onTransitionEnd={handleTransitionEnd}
-                    >
-                        {visibleImages.map((image, index) => (
-                            <div key={index} className="flex-shrink-0 slider w-1/10" onClick={() => navigateToNextPage(image)}>
-                                <img src={image.url} alt={image.name} className="w-full h-52" />
-                                <div className="card-content">
-                                    <h1 className="p-2 font-bold text-center name">{image.name}</h1>
-                                    <span className=" text-green-600 para">{image.paragraph}</span>
-                                    <h2 className="p-2 text-gay-600 brand">{image.brand}</h2>
-                                </div>
+        <div className="bg-white">
+            <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+                <h2 className="text-2xl font-bold tracking-tight text-gray-900 mb-4">Customers also purchased</h2>
+                  <hr />
+                <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+                    {products.map((image) => (
+                        <div key={image.id} className="group relative" onClick={() => navigateToNextPage(image)} >
+                            <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                                <img
+                                    src={image.url}
+                                    alt={image.imageAlt}
+                                    className="h-full w-full object-cover object-center lg:h-full lg:w-full"
+                                />
                             </div>
-                        ))}
-                    </div>
-                    <button
-                        className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-slate-600 border ms-3 shadow-lg hover:bg-black rounded-3xl text-white px-2 py-4"
-                        onClick={prevSlide}
-                        style={{borderRadius:'50%'}}
-                    >
-                        <i className="fa fa-arrow-left text-white pt-2 pb-2"></i>
-                    </button>
-                    <button
-                        className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-slate-600 border me-3 shadow-lg hover:bg-black rounded-3xl text-white px-2 py-4"
-                        onClick={nextSlide}
-                        style={{borderRadius:'50%'}}
-                    >
-                        <i className="fa fa-arrow-right text-white pt-2 pb-2"></i>
-                    </button>
+                            <div className="mt-4 flex justify-space-between gap-8 p-2">
+                                <div>
+                                    <h3 className="text-xl text-gray-900">
+                                        {image.name}
+                                    </h3>
+
+                                </div>
+                                <p className="text-xl font-medium text-gray-900">&#8377; {image.price}</p>
+
+                            </div>
+                        </div>
+                    ))}
                 </div>
             </div>
         </div>
-    );
-};
-
-export default Slider;
+    )
+}

@@ -1,10 +1,16 @@
-import { useState } from 'react';
+import { useState ,useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '../../assets/header/logo.png';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [value, setvalue] = useState([]);
 
+  useEffect(() => {
+    const store = JSON.parse(localStorage.getItem('alldata')) || [];
+    setvalue(store);
+    console.log(value)
+}, []);
   return (
     <>
       <header className="bg-customBlue shadow-md relative text-white">
@@ -74,7 +80,7 @@ const Header = () => {
               <button className=' mr-5'><i className="fa-solid fa-user text-white"></i></button>
             </div>
             <button><i className="fa-solid fa-cart-shopping w-6 lg:w-6"></i></button>
-            <span className='text-xs hidden lg:inline-flex lg:text-xl'>Cart</span>
+            <span className='text-xs hidden lg:inline-flex lg:text-xl '>Cart </span>
           </div>
         </div>
         <div className='sm:hidden inline-flex items-center bg-gray-200 rounded-md mx-auto overflow-hidden h-11 w-full max-w-3xl'>

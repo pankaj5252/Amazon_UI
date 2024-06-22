@@ -1,10 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
+import Slider from './Slider';
+
 const AddtoCart = (image) => {
   const navigate = useNavigate();
   const location = useLocation();
   const imageData = location.state.imageData;
+
+  const handleAddToCart = () => {
+
+      const newdata=JSON.parse(localStorage.getItem("alldata"))|| [];
+      const newCart = [...newdata, imageData];
+      localStorage.setItem("alldata",JSON.stringify(newCart));
+
+      navigate('/cart');
+   
+  };
   return (
     <>
 
@@ -21,7 +33,7 @@ const AddtoCart = (image) => {
             <p className='mt-2 text-lg '>Rating: {imageData.rating}</p>
 
             <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 sm:grid-cols-2 gap-4 '>
-              <button className='bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-6 mt-4 rounded'>Add to Cart</button>
+              <button className='bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-6 mt-4 rounded' onClick={handleAddToCart}>Add to Cart</button>
               <button
                 className='bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-6 mt-4 rounded'
                 onClick={() => {
@@ -33,6 +45,9 @@ const AddtoCart = (image) => {
 
             </div>
           </div>
+        </div>
+        <div>
+          <Slider />
         </div>
       </div>
 
