@@ -1,11 +1,15 @@
 import React from 'react';
 import logo from '../../assets/Footer/logo.png.png';
 const Footer = () => {
+
+  const backtotop=()=>{
+    window.scrollTo(0,0) ; 
+  }
   return (
     <footer className="text-white mt-3">
       <div className="container-fluid bg-gray-700 mx-auto grid grid-cols-1 md:grid-cols-1 sm:grid-cols-2 gap-8">
         <div className="flex justify-center items-center p-4">
-          <h4 className="font-bold text-center">Back To Top</h4>
+          <h4 className="font-bold text-center"><button onClick={backtotop} >Back to Top</button></h4>
         </div>
       </div>
 
@@ -80,8 +84,8 @@ const Footer = () => {
                 <i className="fa-solid fa-globe p-2"></i>
                 <button>English</button>
               </span>
-              <span className='border p-1 pe-3 rounded flex items-center'>
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCnQXo7eUZqYL9_br-pTPTkbowPp_JvvFdqw&s" className='h-4 w-6 mr-2' alt="flag" />
+              <span className='border p-1 pe-4 rounded flex items-center'>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCnQXo7eUZqYL9_br-pTPTkbowPp_JvvFdqw&s" className='h-4 w-6 mr-2 ps-2' alt="flag" />
                 <button>India</button>
               </span>
             </div>

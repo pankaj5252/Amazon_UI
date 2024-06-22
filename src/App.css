@@ -1,3 +1,31 @@
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* header css */
+
+.paddingheader
+{
+  font-size: 17px !important;
+  z-index: 9999;
+}
+@media only screen and (max-width:700px) {
+
+  .paddingheader
+  {
+    padding: 0px;
+    font-size: 10px !important;
+    z-index: 9999;
+  }
+  
+}
+
+/* BG-slider css */
+
+
+  /* slider cards css */
+
 .slider {
     width: 15%;
     height: auto;
@@ -5,7 +33,7 @@
   }
   
   .slider .name {
-    font-size: 24px;
+    font-size: 20px;
   }
   
   .slider .para {
@@ -20,6 +48,20 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+
+  @media only screen and (max-width:600px) {
+    
+    .offer-heading
+    {
+      font-size: 16px !important;
+    }
+    .viewall
+    {
+      padding: 10px !important;
+    }
+   
   }
   
   @media only screen and (max-width: 1200px) {

@@ -33,30 +33,30 @@ const Header = () => {
               <Link to="/"><img src={Logo} alt="Amazon Logo" className='w-28' /></Link>
             </div>
           </div>
-          <div className='hidden lg:block text-center p-2 hover:border-b'>
+          <div className='hidden lg:block text-center paddingheader hover:border-b'>
             <p className='text-xs lg:text-sm'>Delivering to Pune 440033</p>
             <b className='cursor-pointer text-xs lg:text-base'><i className="fa-solid fa-location-dot"></i> Update Location</b>
           </div>
           <div className='hidden lg:flex items-center bg-gray-200 rounded-md overflow-hidden h-11 w-full max-w-3xl'>
-            <button className='bg-gray-300 text-black font-bold p-2 h-11'>
+            <button className='bg-gray-300 text-black font-bold paddingheader h-11'>
               <select className='bg-gray-300 h-full' name="" id="">
                 <option value="">All</option>
                 <option value="">A</option>
                 <option value="">B</option>
               </select>
             </button>
-            <input type="text" className='p-2 h-full flex-grow' placeholder='Search Amazon.in' />
+            <input type="text" className='p-2 h-full flex-grow text-black' placeholder='Search Amazon.in' />
             <button className='p-2 bg-orange-400 h-11 w-14'>
               <i className="fa-solid fa-magnifying-glass text-black"></i>
             </button>
           </div>
-          <div className="hidden lg:block ml-4 p-2 hover:border-b">
+          <div className="hidden lg:block ml-4 paddingheader hover:border-b">
             <select className='bg-customBlue text-white' name="" id="">
               <option value="">EN</option>
               <option value="">EN</option>
             </select>
           </div>
-          <div className="hidden lg:block ml-4 p-2 hover:border-b">
+          <div className="hidden lg:block ml-4 paddingheader hover:border-b">
             <button className='text-left'>
               <p className='text-xs lg:text-sm'>Hello, sign in</p>
               <b className='text-xs lg:text-base'>Account & Lists</b>
@@ -68,12 +68,12 @@ const Header = () => {
               <b className='text-xs lg:text-base'>& Orders</b>
             </button>
           </div>
-          <div className="p-2">
+          <div className="p-0">
             <div className='md:hidden inline-flex'>
               <p className='mr-3'>Sign in</p>
               <button className=' mr-5'><i className="fa-solid fa-user text-white"></i></button>
             </div>
-            <button><i className="fa-solid fa-cart-shopping w-6 lg:w-8"></i></button>
+            <button><i className="fa-solid fa-cart-shopping w-6 lg:w-6"></i></button>
             <span className='text-xs hidden lg:inline-flex lg:text-xl'>Cart</span>
           </div>
         </div>
@@ -87,7 +87,7 @@ const Header = () => {
       </header>
 
       {isOpen && (
-        <div className="w-64 lg:hidden absolute top-0 bg-gray-100 text-black p-2">
+        <div className="w-64 lg:hidden absolute top-0 bg-gray-100 text-black paddingheader">
            <button
               onClick={() => setIsOpen(!isOpen)}
               className="text-dark focus:outline-none lg:hidden"
