@@ -214,6 +214,12 @@ const Slider = () => {
         },1000)
     }
 
+    const viewall=()=>{
+
+        navigate('/multidetails');
+        window.scroll(0,0);
+    }
+
     return (
         <div className="container-fluid p-2" style={{ position:'relative', top:'-50px'}}  >
             <div className="bg-white p-4 rounded shadow-sm">
@@ -222,7 +228,7 @@ const Slider = () => {
                         Offers for todays up to <span className='text-green-500'>60%</span> Off 
                     </div>
                     <div className='text-end'>
-                        <button className='bg-blue-400 text-white ps-4 pe-4 p-2 rounded viewall hover:bg-blue-500 ' >VIEW ALL</button>
+                        <button className='bg-blue-400 text-white ps-4 pe-4 p-2 rounded viewall hover:bg-blue-500 ' onClick={viewall} >VIEW ALL</button>
                     </div>
                 </div>
                 <div className="relative w-full h-auto overflow-hidden p-4">

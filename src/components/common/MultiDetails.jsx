@@ -11,7 +11,8 @@ const products = [
         desc: "jAWHDIRDMNwuqi    nmwfrbjhrknd w wejk krwerkh  qhrk   k e jw kwe  hkl     bekl  ewf b",
         brand: 'Sport',
         rating: '4.5',
-        price: '35',
+        discount: '10',
+        price: '350',
         color: 'Black',
     },
     {
@@ -175,9 +176,9 @@ export default function MultiDetails() {
     };
     return (
         <div className="bg-white">
-            <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+            <div className="mx-auto max-w-2xl px-4 pt-16 pb-0 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
                 <h2 className="text-2xl font-bold tracking-tight text-gray-900 mb-4">Customers also purchased</h2>
-                  <hr />
+                <hr />
                 <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
                     {products.map((image) => (
                         <div key={image.id} className="group relative" onClick={() => navigateToNextPage(image)} >
@@ -200,6 +201,9 @@ export default function MultiDetails() {
                             </div>
                         </div>
                     ))}
+                </div>
+                <div className='p-2 text-center' >
+                    <button className='hover:text-blue-500 mt-2 p-4   text-xl ' onClick={() => navigate('/')} >Back To Home</button>
                 </div>
             </div>
         </div>
