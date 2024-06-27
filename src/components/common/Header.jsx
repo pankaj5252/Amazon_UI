@@ -3,6 +3,12 @@ import { Link } from 'react-router-dom';
 import Logo from '../../assets/header/logo.png';
 
 const Header = () => {
+
+  const categories = [
+    "Electronics", "Clothing", "Home & Kitchen", "Beauty", "Toys",
+    "Sports", "Automotive", "Books", "Movies & TV", "Music",
+    "Video Games", "Pet Supplies", "Grocery", "Health"
+  ];
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -39,10 +45,12 @@ const Header = () => {
           </div>
           <div className='hidden lg:flex items-center bg-gray-200 rounded-md overflow-hidden h-11 w-full max-w-3xl'>
             <button className='bg-gray-300 text-black font-bold p-2 h-11'>
-              <select className='bg-gray-300 h-full' name="" id="">
-                <option value="">All</option>
-                <option value="">A</option>
-                <option value="">B</option>
+              <select className='bg-gray-300 w-full h-full' name="" id="">
+                {categories.map((category, index) => (
+                  <option key={index} className="whitespace-nowrap hover:border-b hover:cursor-pointer">
+                    {category}
+                  </option>
+                ))}
               </select>
             </button>
             <input type="text" className='p-2 h-full flex-grow' placeholder='Search Amazon.in' />
@@ -53,13 +61,16 @@ const Header = () => {
           <div className="hidden lg:block ml-4 p-2 hover:border-b">
             <select className='bg-customBlue text-white' name="" id="">
               <option value="">EN</option>
-              <option value="">EN</option>
+              <option value="">HN</option>
+              <option value="">MA</option>
             </select>
           </div>
           <div className="hidden lg:block ml-4 p-2 hover:border-b">
             <button className='text-left'>
-              <p className='text-xs lg:text-sm'>Hello, sign in</p>
-              <b className='text-xs lg:text-base'>Account & Lists</b>
+              <Link to="/login">
+                <p className='text-xs lg:text-sm'>Hello, sign in</p>
+                <b className='text-xs lg:text-base'>Account & Lists</b>
+              </Link>
             </button>
           </div>
           <div className="hidden lg:block  ml-4 p-1 hover:border-b">

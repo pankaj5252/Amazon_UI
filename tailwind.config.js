@@ -8,6 +8,7 @@ export default {
     extend: {
       colors: {
         customBlue: '#131921',
+        customBlue1: '#262F40',
       },
       width:{
         w650: '650px'
