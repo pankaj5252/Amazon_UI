@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const images = [
     {
-        url:'https://m.media-amazon.com/images/I/418lXvhdnrL.jpg',
+        url: 'https://m.media-amazon.com/images/I/418lXvhdnrL.jpg',
         name: 'MRF Bat',
         paragraph: 'Extra 15% Off Now',
         brand: 'Sport',
@@ -15,7 +15,7 @@ const images = [
 
 
     },
-    
+
     {
         url: 'https://www.gonoise.com/cdn/shop/files/5_e4fa5b99-a083-498f-809a-977a94826ad2.png?v=1694430241',
         name: 'Noise Buds',
@@ -41,7 +41,7 @@ const images = [
 
     },
     {
-        url:'https://www.venushomeappliances.com/storage/app/product/6e4473c0-1c84-11ee-9e7e-c778ba8f1c14/20230707060124adorna-image-0.png',
+        url: 'https://www.venushomeappliances.com/storage/app/product/6e4473c0-1c84-11ee-9e7e-c778ba8f1c14/20230707060124adorna-image-0.png',
         name: 'Fan',
         paragraph: 'Extra 14% Off Now',
         brand: 'Electronics',
@@ -148,24 +148,21 @@ const images = [
         id: 12,
 
     },
-    // Add more images to the array
 ];
 
 const Slider = () => {
     const [visibleImages, setVisibleImages] = useState(images);
     const [transition, setTransition] = useState(true);
-    const [time,settime]=useState('');
     const intervalRef = useRef(null);
     const navigate = useNavigate();
 
     const navigateToNextPage = (image) => {
-
         navigate('/addtocart', {
             state: {
                 imageData: image,
             },
         });
-        window.scrollTo(0,0) ;
+        window.scrollTo(0, 0);
     };
 
     const startAutoSlide = () => {
@@ -183,7 +180,6 @@ const Slider = () => {
 
     useEffect(() => {
         startAutoSlide();
-        timechange();
         return () => stopAutoSlide();
     }, []);
 
@@ -207,60 +203,57 @@ const Slider = () => {
         setTransition(false);
     };
 
-    const timechange=()=>{
-        setInterval(()=>{
-            var time=new Date();
-            settime(time.toLocaleTimeString());
-        },1000)
-    }
-
-    const viewall=()=>{
-
+    const viewAll = () => {
         navigate('/multidetails');
-        window.scroll(0,0);
-    }
+        window.scrollTo(0, 0);
+    };
 
     return (
-        <div className="container-fluid p-2" style={{ position:'relative', top:'-50px'}}  >
+        <div className="container-fluid mx-auto p-2 relative" style={{ top: '-50px' }}>
             <div className="bg-white p-4 rounded shadow-sm">
-                <div className="grid grid-cols-2 md:grid-cols-2 sm:grid-cols-2 p-2  ">
-                    <div className='text-2xl font-bold offer-heading'>
-                        Offers for todays up to <span className='text-green-500'>60%</span> Off 
+                <div className="flex justify-between p-2">
+                    <div className='text-2xl font-bold'>
+                        Offers for today up to <span className='text-green-500'>60%</span> Off
                     </div>
-                    <div className='text-end'>
-                        <button className='bg-blue-400 text-white ps-4 pe-4 p-2 rounded viewall hover:bg-blue-500 ' onClick={viewall} >VIEW ALL</button>
-                    </div>
+                    <button
+                        className='bg-blue-400 text-white px-4 py-2 rounded hover:bg-blue-500'
+                        onClick={viewAll}
+                    >
+                        VIEW ALL
+                    </button>
                 </div>
-                <div className="relative w-full h-auto overflow-hidden p-4">
+                <div className="relative w-full h-auto overflow-hidden">
                     <div
                         className={`flex ${transition ? 'transition-transform duration-500' : ''}`}
                         style={{ transform: `translateX(-10%)` }}
                         onTransitionEnd={handleTransitionEnd}
                     >
                         {visibleImages.map((image, index) => (
-                            <div key={index} className="flex-shrink-0 slider w-1/10" onClick={() => navigateToNextPage(image)}>
-                                <img src={image.url} alt={image.name} className="w-full h-52" />
-                                <div className="card-content">
-                                    <h1 className="p-2 font-bold text-center name">{image.name}</h1>
-                                    <span className=" text-green-600 para">{image.paragraph}</span>
-                                    <h2 className="p-2 text-gay-600 brand">{image.brand}</h2>
+                            <div
+                                key={index}
+                                className="flex-shrink-0 w-1/5 cursor-pointer p-3"
+                                onClick={() => navigateToNextPage(image)}
+                            >
+                                <img src={image.url} alt={image.name} className="w-full h-52 rounded" />
+                                <div className="text-center mt-2">
+                                    <h1 className="font-bold">{image.name}</h1>
+                                    <span className="text-green-600">{image.paragraph}</span>
+                                    <h2 className="text-gray-600">{image.brand}</h2>
                                 </div>
                             </div>
                         ))}
                     </div>
                     <button
-                        className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-slate-600 border ms-3 shadow-lg hover:bg-black rounded-3xl text-white px-2 py-4"
+                        className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-white border  rounded text-black px-3 py-3"
                         onClick={prevSlide}
-                        style={{borderRadius:'50%'}}
                     >
-                        <i className="fa fa-arrow-left text-white pt-2 pb-2"></i>
+                        <i className="fa fa-arrow-left"></i>
                     </button>
                     <button
-                        className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-slate-600 border me-3 shadow-lg hover:bg-black rounded-3xl text-white px-2 py-4"
+                        className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-white border  rounded text-black px-3 py-3"
                         onClick={nextSlide}
-                        style={{borderRadius:'50%'}}
                     >
-                        <i className="fa fa-arrow-right text-white pt-2 pb-2"></i>
+                        <i className="fa fa-arrow-right"></i>
                     </button>
                 </div>
             </div>

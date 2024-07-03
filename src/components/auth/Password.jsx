@@ -5,7 +5,7 @@ import Logo from '../../assets/Footer/logo.png.png'
 const Password = () => {
   return (
     <div className="flex items-center justify-center min-h-screen ">
-      <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+      <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md border">
         <div className="flex justify-center mb-4">
           <img src={Logo} alt="Amazon Logo" className="h-16" />
         </div>

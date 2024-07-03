@@ -1,4 +1,3 @@
-import React from 'react'
 import img1 from '../../assets/ads/ad-1.webp';
 import img2 from '../../assets/ads/ad-2.webp';
 import img3 from '../../assets/ads/ad-3.webp';
@@ -7,7 +6,7 @@ const Homead1 = () => {
     return (
         <>
 
-            <div className="container-fluid shadow-sm p-2">
+            <div className="container-fluid mx-">
                 <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 sm:grid-cols-1 ">
 
                     <div>
@@ -23,7 +22,7 @@ const Homead1 = () => {
                 </div>
             </div>
 
-            <div className="container-fluid shadow-sm p-2">
+            <div className="container-fluid mx-auto pt-3">
                 <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 sm:grid-cols-1 ">
 
                     <div>

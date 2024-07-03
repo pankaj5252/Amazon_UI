@@ -1,16 +1,37 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Logo from '../../assets/Footer/logo.png.png'
+import { useState } from "react";
 
-// src/components/auth/Register.jsx
 const Register = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    mobile: '',
+    password: ''
+  });
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setFormData(prevState => ({
+      ...prevState,
+      [id]: value
+    }));
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formData);
+    navigate('/otp', { state: formData });
+  }
+
   return (
     <div className="flex items-center justify-center min-h-screen">
-      <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+      <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md border">
         <div className="flex justify-center mb-4">
-         <Link to="/"><img src={Logo} alt="Amazon Logo" className="h-16" /></Link>
+          <Link to="/"><img src={Logo} alt="Amazon Logo" className="h-16" /></Link>
         </div>
         <h2 className="text-2xl font-semibold mb-6 text-center">Create Account</h2>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
               Your name
@@ -20,6 +41,7 @@ const Register = () => {
               id="name"
               type="text"
               placeholder="First and last name"
+              onChange={handleChange}
             />
           </div>
           <div className="mb-4">
@@ -38,6 +60,7 @@ const Register = () => {
                 className="shadow appearance-none border rounded-r w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 id="mobile"
                 type="text"
+                onChange={handleChange}
               />
             </div>
           </div>
@@ -50,17 +73,18 @@ const Register = () => {
               id="password"
               type="password"
               placeholder="Password"
+              onChange={handleChange}
             />
             <p className="text-xs text-gray-600">Passwords must be at least 6 characters.</p>
           </div>
           <button
+            type="submit"
             className="bg-yellow-500 hover:bg-yellow-600 text-white rounded-lg font-bold py-2 px-4 focus:outline-none focus:shadow-outline w-full"
-            type="button"
           >
             Verify mobile number
           </button>
           <div className="mt-4 text-center">
-            <Link to="#" className="text-blue-600 text-sm">Buying for work? Create Link free business account</Link>
+            <Link to="#" className="text-blue-600 text-sm">Buying for work? Create a free business account</Link>
           </div>
           <div className="mt-4 text-center">
             <p className="text-sm text-gray-600">Already have an account? <Link to="/login" className="text-blue-600">Sign in</Link></p>

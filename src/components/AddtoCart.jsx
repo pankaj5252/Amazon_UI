@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import Slider from './Slider';
 
-const AddtoCart = (image) => {
+const AddtoCart = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const imageData = location.state.imageData;

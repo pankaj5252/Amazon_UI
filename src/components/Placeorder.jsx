@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import jsPDF from 'jspdf';
 
@@ -6,7 +6,7 @@ const PlaceOrder = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const { quantity,...item } = location.state;
+  // const { quantity,...item } = location.state;
   const selectedItem = location.state;
 
   const [customerName, setCustomerName] = useState('');

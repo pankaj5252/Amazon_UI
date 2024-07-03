@@ -1,4 +1,3 @@
-import React from 'react'
 import Slider from '../Slider'
 import img1 from '../../../src/assets/Bgslider/amg-1.jpg';
 import img2 from '../../../src/assets/Bgslider/amg-3.jpg';
@@ -13,8 +12,8 @@ const SliderDivide = () => {
                             <Slider />
                         </div>
                     </div>
-                    <div className="lg:col-span-3 md:col-span-3 sm:col-span-12 col-span-12 p-2 mt-1 ">
-                        <div className='shadow-sm pt-6 pb-12'>
+                    <div className="lg:col-span-3 md:col-span-3 sm:col-span-12 col-span-12 mt-9">
+                        <div className=' bg-white'>
                             <h1 className='p-3 text-2xl font-bold text-center'>Name of the offer</h1>
                             <div className="container " >
                                 <div className="grid grid-cols-2 gap-3">
@@ -38,7 +37,7 @@ const SliderDivide = () => {
                                 </div>
                             </div>
                             <div className=''>
-                                <button className='text-center text-blue-400 p-4'>See more</button>
+                                <button className='text-center text-blue-400 p-3'>See more</button>
                             </div>
                         </div>
                     </div>
