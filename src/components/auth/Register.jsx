@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
-import Logo from '../../assets/Footer/logo.png.png'
+import axios from "axios";
 import { useState } from "react";
+import Logo from '../../assets/Footer/logo.png.png';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -16,13 +17,38 @@ const Register = () => {
       ...prevState,
       [id]: value
     }));
-  }
-
-  const handleSubmit = (e) => {
+  };
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
-    navigate('/otp', { state: formData });
-  }
+    console.log('Form Data:', formData);
+    try {
+      const response = await axios.post(
+        "https://amazon-backend-6eco.onrender.com/register",
+        formData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response.status === 200 || response.status === 201) {
+        console.log("Registration successful!");
+        setTimeout(() => {
+          navigate('/login');
+        }, 1000);
+      } else {
+        console.error("Registration failed. Please try again.");
+      }
+    } catch (error) {
+      if (error.response) {
+        alert(`${error.response.data.message}`)
+        console.error(`Error: ${error.response.data.message}`);
+      } else {
+        console.error("An unexpected error occurred. Please try again.");
+      }
+    }
+  };
 
   return (
     <div className="flex items-center justify-center min-h-screen">
@@ -42,6 +68,7 @@ const Register = () => {
               type="text"
               placeholder="First and last name"
               onChange={handleChange}
+              required
             />
           </div>
           <div className="mb-4">
@@ -61,6 +88,7 @@ const Register = () => {
                 id="mobile"
                 type="text"
                 onChange={handleChange}
+                required
               />
             </div>
           </div>
@@ -74,6 +102,7 @@ const Register = () => {
               type="password"
               placeholder="Password"
               onChange={handleChange}
+              required
             />
             <p className="text-xs text-gray-600">Passwords must be at least 6 characters.</p>
           </div>
@@ -81,7 +110,7 @@ const Register = () => {
             type="submit"
             className="bg-yellow-500 hover:bg-yellow-600 text-white rounded-lg font-bold py-2 px-4 focus:outline-none focus:shadow-outline w-full"
           >
-            Verify mobile number
+           Registered Here
           </button>
           <div className="mt-4 text-center">
             <Link to="#" className="text-blue-600 text-sm">Buying for work? Create a free business account</Link>

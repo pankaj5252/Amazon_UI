@@ -1,26 +1,38 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '../../assets/header/logo.png';
 
 const Header = () => {
-
   const categories = [
     "Electronics", "Clothing", "Home & Kitchen", "Beauty", "Toys",
     "Sports", "Automotive", "Books", "Movies & TV", "Music",
     "Video Games", "Pet Supplies", "Grocery", "Health"
   ];
-  const [isOpen, setIsOpen] = useState(false);
-  // const [value, setvalue] = useState([]);
 
-  // useEffect(() => {
-  //   const store = JSON.parse(localStorage.getItem('alldata')) || [];
-  //   setvalue(store);
-  //   console.log(value)
-  // },[]);
+  const [isOpen, setIsOpen] = useState(false);
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem('user'));
+    if (storedUser) {
+      setUser(storedUser);
+    }
+  }, []);
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const handleLogout = () => {
+    localStorage.clear();
+    console.log('User logged out');
+    setUser('')
+  };
+
   return (
     <>
       <header className="bg-customBlue shadow-md text-white sticky top-0 z-50">
-        <div className="container  mx-auto py-3 flex justify-between items-center flex-wrap">
+        <div className="container-fluid mx-auto py-3 flex justify-between items-center flex-wrap">
           <div className="flex items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -71,24 +83,46 @@ const Header = () => {
               <option value="">MA</option>
             </select>
           </div>
-          <div className="hidden lg:block ml-4 paddingheader hover:border-b">
-            <button className='text-left'>
+          <div className="hidden lg:block ml-4 paddingheader hover:border-b cursor-pointer">
+            {user ? (
+              <div className="relative">
+                <div className="text-left cursor-pointer" onClick={toggleDropdown}>
+                  <p className="text-xs lg:text-sm">Hello, <span className="font-bold">{user.name}</span></p>
+                  <p className="text-xs lg:text-base">Account & Lists</p>
+                </div>
+                {isOpen && (
+                  <div className="absolute right-0 mt-2 w-48 bg-customBlue border rounded-xl shadow-lg z-10">
+                    <ul className="py-1">
+                      <li className="px-4 py-2 hover:bg-gray-400 cursor-pointer">Profile</li>
+                      <li className="px-4 py-2 hover:bg-gray-400 cursor-pointer">Orders</li>
+                      <li className="px-4 py-2 hover:bg-gray-400 cursor-pointer" onClick={handleLogout}>Sign Out</li>
+                    </ul>
+                  </div>
+                )}
+              </div>
+            ) : (
               <Link className='hover:text-white' to="/login">
                 <p className='text-xs lg:text-sm'>Hello, sign in</p>
                 <b className='text-xs lg:text-base'>Account & Lists</b>
               </Link>
-            </button>
+            )}
           </div>
-          <div className="hidden lg:block  ml-4 p-1 hover:border-b">
-            <button>
-              <p className='text-xs lg:text-sm'>Returns</p>
-              <b className='text-xs lg:text-base'>& Orders</b>
+          <div className="hidden lg:block ml-4 paddingheader hover:border-b">
+            <button className='text-left'>
+              <Link className='hover:text-white' to="/orders">
+                <p className='text-xs lg:text-sm'>Returns</p>
+                <b className='text-xs lg:text-base'>& Orders</b>
+              </Link>
             </button>
           </div>
           <div className="p-2 ">
             <div className="p-0">
               <div className='md:hidden inline-flex'>
-                <p className='mr-3'>Sign in</p>
+                {user ? (
+                  <b className='mr-3'>{user.name}</b>
+                ) : (
+                  <p className='mr-3'>Sign in</p>
+                )}
                 <button className=' mr-5'><i className="fa-solid fa-user text-white"></i></button>
               </div>
               <button><i className="fa-solid fa-cart-shopping w-6 lg:w-8"></i></button>
