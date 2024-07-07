@@ -11,7 +11,7 @@ const Password = () => {
 
   const [formData, setFormData] = useState({
     mobile: mobileNumber.mobile,
-    password:''
+    password: ''
   });
 
   const handleChange = (e) => {
@@ -24,23 +24,22 @@ const Password = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData)
+    // console.log(formData)
     try {
       const response = await axios.post('https://amazon-backend-6eco.onrender.com/login', formData);
       if (response.data.token) {
         const userData = JSON.stringify(response.data.user);
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('user', userData);
-        console.log(response.data); // Log response for debugging
+        // console.log(response.data); 
         setTimeout(() => {
           navigate('/');
         }, 1000);
       } else {
-        console.log(response.data); // Log response for debugging
+        console.log(response.data);
       }
     } catch (error) {
       console.error('Error during login:', error);
-      // Handle specific errors here, e.g., display a message to the user
     }
   };
 
@@ -80,7 +79,7 @@ const Password = () => {
           <Link to="#" className="text-blue-600 text-sm ml-2 float-end">Forgot Password</Link>
 
           <div className="flex items-center mt-4">
-            <input type="checkbox" id="keep-signed-in" className="mr-2" />
+            <input type="checkbox" id="keep-signed-in" className="mr-2" required />
             <label htmlFor="keep-signed-in" className="text-sm text-gray-700">Keep me signed in.</label>
             <Link to="#" className="text-blue-600 text-sm ml-2">Details</Link>
           </div>

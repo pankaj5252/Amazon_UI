@@ -11,6 +11,7 @@ const Header = () => {
 
   const [isOpen, setIsOpen] = useState(false);
   const [user, setUser] = useState(null);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem('user'));
@@ -29,6 +30,9 @@ const Header = () => {
     setUser('')
   };
 
+  const toggleDropdown1 = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
   return (
     <>
       <header className="bg-customBlue shadow-md text-white sticky top-0 z-50">
@@ -115,19 +119,28 @@ const Header = () => {
               </Link>
             </button>
           </div>
-          <div className="p-2 ">
-            <div className="p-0">
-              <div className='md:hidden inline-flex'>
-                {user ? (
-                  <b className='mr-3'>{user.name}</b>
-                ) : (
-                  <p className='mr-3'>Sign in</p>
-                )}
-                <button className=' mr-5'><i className="fa-solid fa-user text-white"></i></button>
-              </div>
-              <button><i className="fa-solid fa-cart-shopping w-6 lg:w-8"></i></button>
-              <span className='text-xs hidden lg:inline-block lg:text-xl'>Cart</span>
+          <div className="p-2 flex items-center lg:hidden">
+            <div className="relative inline-flex items-center">
+              {user ? (
+                <>
+                  <b className="mr-3 cursor-pointer" onClick={toggleDropdown1}>{user.name}</b>
+                  {isDropdownOpen && (
+                    <div className="absolute right-0 mt-44 w-48 bg-customBlue border rounded-xl shadow-lg z-10">
+                      <ul className="py-1">
+                        <li className="px-4 py-2 hover:bg-gray-400 cursor-pointer">Profile</li>
+                        <li className="px-4 py-2 hover:bg-gray-400 cursor-pointer">Orders</li>
+                        <li className="px-4 py-2 hover:bg-gray-400 cursor-pointer" onClick={handleLogout}>Sign Out</li>
+                      </ul>
+                    </div>
+                  )}
+                </>
+              ) : (
+                <p className="mr-3"><Link to="/login">Sign in</Link></p>
+              )}
+              <button className="mr-5"><i className="fa-solid fa-user text-white"></i></button>
             </div>
+            <button><i className="fa-solid fa-cart-shopping w-6 lg:w-8"></i></button>
+            <span className="text-xs hidden lg:inline-block lg:text-xl">Cart</span>
           </div>
           <div className='sm:hidden inline-flex items-center bg-gray-200 rounded-md mx-auto overflow-hidden h-11 w-full max-w-3xl'>
             <input type="text" className='p-2 h-full w-full flex-grow' placeholder='Search Amazon.in' />

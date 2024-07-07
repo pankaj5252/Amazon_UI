@@ -231,10 +231,10 @@ const Slider = () => {
                         {visibleImages.map((image, index) => (
                             <div
                                 key={index}
-                                className="flex-shrink-0 w-1/5 cursor-pointer p-3"
+                                className="flex-shrink-0 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 cursor-pointer p-3"
                                 onClick={() => navigateToNextPage(image)}
                             >
-                                <img src={image.url} alt={image.name} className="w-full h-52 rounded" />
+                                <img src={image.url} alt={image.name} className="w-full h-auto rounded" />
                                 <div className="text-center mt-2">
                                     <h1 className="font-bold">{image.name}</h1>
                                     <span className="text-green-600">{image.paragraph}</span>
@@ -244,13 +244,13 @@ const Slider = () => {
                         ))}
                     </div>
                     <button
-                        className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-white border  rounded text-black px-3 py-3"
+                        className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-white border rounded text-black px-3 py-3"
                         onClick={prevSlide}
                     >
                         <i className="fa fa-arrow-left"></i>
                     </button>
                     <button
-                        className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-white border  rounded text-black px-3 py-3"
+                        className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-white border rounded text-black px-3 py-3"
                         onClick={nextSlide}
                     >
                         <i className="fa fa-arrow-right"></i>
