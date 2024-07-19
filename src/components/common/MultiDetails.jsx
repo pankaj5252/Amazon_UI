@@ -1,4 +1,6 @@
 import { useNavigate } from 'react-router-dom';
+import Header from './Header';
+import Footer from './Footer';
 
 const products = [
 
@@ -162,50 +164,53 @@ const products = [
     },
 ]
 
+
 export default function MultiDetails() {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    const navigateToNextPage = (image) => {
+  const navigateToNextPage = (image) => {
+    navigate('/addtocart', {
+      state: {
+        imageData: image,
+      },
+    });
+    window.scrollTo(0, 0);
+  };
 
-        navigate('/addtocart', {
-            state: {
-                imageData: image,
-            },
-        });
-        window.scrollTo(0, 0);
-    };
-    return (
-        <div className="bg-white">
-            <div className="mx-auto max-w-2xl px-4 pt-16 pb-0 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-                <h2 className="text-2xl font-bold tracking-tight text-gray-900 mb-4">Customers also purchased</h2>
-                <hr />
-                <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-                    {products.map((image) => (
-                        <div key={image.id} className="group relative" onClick={() => navigateToNextPage(image)} >
-                            <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
-                                <img
-                                    src={image.url}
-                                    alt={image.imageAlt}
-                                    className="h-full w-full object-cover object-center lg:h-full lg:w-full"
-                                />
-                            </div>
-                            <div className="mt-4 flex justify-space-between gap-8 p-2">
-                                <div>
-                                    <h3 className="text-xl text-gray-900">
-                                        {image.name}
-                                    </h3>
-
-                                </div>
-                                <p className="text-xl font-medium text-gray-900">&#8377; {image.price}</p>
-
-                            </div>
-                        </div>
-                    ))}
+  return (
+    <>
+      <Header />
+      <div className="bg-white">
+        <div className="mx-auto sm:px-6 pt-4 p-5">
+          <h2 className="text-2xl font-bold tracking-tight text-gray-900 p-2">
+            Customers also purchased
+          </h2>
+          <p className='p-2'>Price and other details may vary based on product size and colour.</p>
+          <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+            {products.map((product) => (
+              <div key={product.id} onClick={()=>navigateToNextPage(product)}  className="group relative shadow p-2 rounded-lg">
+                <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md lg:aspect-none group-hover:opacity-75 lg:h-80">
+                  <img
+                    src={product.url}
+                    alt={product.imageAlt}
+                    className="w-full object-cover object-center"
+                  />
                 </div>
-                <div className='p-2 text-center' >
-                    <button className='hover:text-blue-500 mt-2 p-4   text-xl ' onClick={() => navigate('/')} >Back To Home</button>
+                <div className="mt-4 flex justify-between gap-4 p-2 text-center">
+                  <div>
+                    <h3 className="text-xl text-gray-900 font-semibold">{product.name}</h3>
+                    <p className="text-base text-gray-500">{product.desc}</p>
+                    <p className="text-2xl font-medium text-gray-900">
+                      Price: &#8377; {product.price} /-
+                    </p>
+                  </div>
                 </div>
-            </div>
+              </div>
+            ))}
+          </div>
         </div>
-    )
+      </div>
+      <Footer />
+    </>
+  );
 }

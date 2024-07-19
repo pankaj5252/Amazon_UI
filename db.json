@@ -1,0 +1,249 @@
+{
+    "categories": [
+      {
+        "name": "Electronics",
+        "products": [
+          {
+            "name": "Smartphone",
+            "price": 799.99,
+            "description": "A high-end smartphone with advanced features.",
+            "image": "https://example.com/images/smartphone.jpg"
+          },
+          {
+            "name": "Laptop",
+            "price": 1299.99,
+            "description": "Powerful laptop for work and entertainment.",
+            "image": "https://example.com/images/laptop.jpg"
+          },
+          {
+            "name": "Headphones",
+            "price": 149.99,
+            "description": "Wireless headphones with noise-canceling technology.",
+            "image": "https://example.com/images/headphones.jpg"
+          }
+        ]
+      },
+      {
+        "name": "Clothing",
+        "products": [
+          {
+            "name": "T-Shirt",
+            "price": 19.99,
+            "description": "Comfortable cotton t-shirt.",
+            "image": "https://example.com/images/tshirt.jpg"
+          },
+          {
+            "name": "Jeans",
+            "price": 39.99,
+            "description": "Classic denim jeans.",
+            "image": "https://example.com/images/jeans.jpg"
+          }
+        ]
+      },
+      {
+        "name": "Home & Kitchen",
+        "products": [
+          {
+            "name": "Blender",
+            "price": 49.99,
+            "description": "High-speed blender for smoothies.",
+            "image": "https://example.com/images/blender.jpg"
+          },
+          {
+            "name": "Coffee Maker",
+            "price": 79.99,
+            "description": "Programmable coffee maker.",
+            "image": "https://example.com/images/coffeemaker.jpg"
+          }
+        ]
+      },
+      {
+        "name": "Beauty",
+        "products": [
+          {
+            "name": "Perfume",
+            "price": 59.99,
+            "description": "Elegant fragrance for women.",
+            "image": "https://example.com/images/perfume.jpg"
+          },
+          {
+            "name": "Moisturizer",
+            "price": 29.99,
+            "description": "Hydrating moisturizer for all skin types.",
+            "image": "https://example.com/images/moisturizer.jpg"
+          }
+        ]
+      },
+      {
+        "name": "Toys",
+        "products": [
+          {
+            "name": "Toy Car",
+            "price": 14.99,
+            "description": "Remote-controlled toy car.",
+            "image": "https://example.com/images/toycar.jpg"
+          },
+          {
+            "name": "Doll",
+            "price": 24.99,
+            "description": "Interactive doll with accessories.",
+            "image": "https://example.com/images/doll.jpg"
+          }
+        ]
+      },
+      {
+        "name": "Sports",
+        "products": [
+          {
+            "name": "Yoga Mat",
+            "price": 29.99,
+            "description": "Non-slip yoga mat.",
+            "image": "https://example.com/images/yogamat.jpg"
+          },
+          {
+            "name": "Dumbbell Set",
+            "price": 49.99,
+            "description": "Adjustable dumbbell set.",
+            "image": "https://example.com/images/dumbbell.jpg"
+          }
+        ]
+      },
+      {
+        "name": "Automotive",
+        "products": [
+          {
+            "name": "Car Wax",
+            "price": 19.99,
+            "description": "High-gloss car wax.",
+            "image": "https://example.com/images/carwax.jpg"
+          },
+          {
+            "name": "Dashboard Camera",
+            "price": 89.99,
+            "description": "Dash cam for recording while driving.",
+            "image": "https://example.com/images/dashboardcamera.jpg"
+          }
+        ]
+      },
+      {
+        "name": "Books",
+        "products": [
+          {
+            "name": "Fiction Book",
+            "price": 14.99,
+            "description": "Bestselling fiction novel.",
+            "image": "https://example.com/images/fictionbook.jpg"
+          },
+          {
+            "name": "Non-Fiction Book",
+            "price": 19.99,
+            "description": "Popular non-fiction book.",
+            "image": "https://example.com/images/nonfictionbook.jpg"
+          }
+        ]
+      },
+      {
+        "name": "Movies & TV",
+        "products": [
+          {
+            "name": "Blu-ray Movie",
+            "price": 9.99,
+            "description": "Latest blockbuster movie on Blu-ray.",
+            "image": "https://example.com/images/bluraymovie.jpg"
+          },
+          {
+            "name": "TV Series Box Set",
+            "price": 49.99,
+            "description": "Complete collection of a TV series.",
+            "image": "https://example.com/images/tvseriesboxset.jpg"
+          }
+        ]
+      },
+      {
+        "name": "Music",
+        "products": [
+          {
+            "name": "Vinyl Record",
+            "price": 24.99,
+            "description": "Classic vinyl record.",
+            "image": "https://example.com/images/vinylrecord.jpg"
+          },
+          {
+            "name": "MP3 Album",
+            "price": 7.99,
+            "description": "Digital album download.",
+            "image": "https://example.com/images/mp3album.jpg"
+          }
+        ]
+      },
+      {
+        "name": "Video Games",
+        "products": [
+          {
+            "name": "Gaming Console",
+            "price": 299.99,
+            "description": "Latest gaming console.",
+            "image": "https://example.com/images/gamingconsole.jpg"
+          },
+          {
+            "name": "Video Game",
+            "price": 59.99,
+            "description": "Popular video game title.",
+            "image": "https://example.com/images/videogame.jpg"
+          }
+        ]
+      },
+      {
+        "name": "Pet Supplies",
+        "products": [
+          {
+            "name": "Dog Food",
+            "price": 39.99,
+            "description": "Premium dog food.",
+            "image": "https://example.com/images/dogfood.jpg"
+          },
+          {
+            "name": "Cat Litter",
+            "price": 19.99,
+            "description": "Odor control cat litter.",
+            "image": "https://example.com/images/catlitter.jpg"
+          }
+        ]
+      },
+      {
+        "name": "Grocery",
+        "products": [
+          {
+            "name": "Coffee Beans",
+            "price": 12.99,
+            "description": "Freshly roasted coffee beans.",
+            "image": "https://example.com/images/coffeebeans.jpg"
+          },
+          {
+            "name": "Organic Pasta",
+            "price": 3.99,
+            "description": "Whole wheat organic pasta.",
+            "image": "https://example.com/images/organicpasta.jpg"
+          }
+        ]
+      },
+      {
+        "name": "Health",
+        "products": [
+          {
+            "name": "Vitamins",
+            "price": 29.99,
+            "description": "Multivitamin tablets.",
+            "image": "https://example.com/images/vitamins.jpg"
+          },
+          {
+            "name": "Protein Powder",
+            "price": 49.99,
+            "description": "Whey protein powder.",
+            "image": "https://example.com/images/proteinpowder.jpg"
+          }
+        ]
+      }
+    ]
+  }
+  

@@ -1,6 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import Slider from './Slider';
+import Header from './common/Header';
+import Footer from './common/Footer';
 
 const AddtoCart = () => {
   const navigate = useNavigate();
@@ -18,7 +20,7 @@ const AddtoCart = () => {
   };
   return (
     <>
-
+     <Header/>
       <div className="container-fluid">
         <div className="grid grid-cols-12 p-6 ">
           <div className=' p-4 col-span-12 lg:col-span-4 md:col-span-4 sm:col-span-12'>
@@ -49,9 +51,7 @@ const AddtoCart = () => {
           <Slider />
         </div>
       </div>
-
-
-
+   <Footer/>
     </>
   )
 }

@@ -181,7 +181,7 @@ const Slider = () => {
     useEffect(() => {
         startAutoSlide();
         return () => stopAutoSlide();
-    }, []);
+    },[]);
 
     const nextSlide = () => {
         setTransition(true);

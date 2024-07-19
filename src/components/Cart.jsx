@@ -1,5 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Header from './common/Header';
+import Footer from './common/Footer';
+
+
 const Cart = () => {
   const navigate = useNavigate();
   const [value, setvalue] = useState([]);
@@ -33,6 +37,8 @@ const Cart = () => {
   };
 
   return (
+   <>
+   <Header/>
     <div className=''>
       <div className='container' >
         <div className='grid lg:grid-cols-1 md:grid-cols-1 sm:grid-cols-1 mt-2 mb-2 grid-cols-1 ' >
@@ -73,6 +79,8 @@ const Cart = () => {
         <button className='hover:text-blue-500 mt-2 p-4   text-xl ' onClick={() => navigate('/')} >Back To Home</button>
       </div>
     </div>
+    <Footer/>
+   </>
   );
 };
 

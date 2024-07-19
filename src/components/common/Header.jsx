@@ -36,7 +36,7 @@ const Header = () => {
   return (
     <>
       <header className="bg-customBlue shadow-md text-white sticky top-0 z-50">
-        <div className="container-fluid mx-auto py-3 flex justify-between items-center flex-wrap">
+        <div className="container-fluid mx-auto py-2 px-2 flex justify-between items-center flex-wrap">
           <div className="flex items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -58,7 +58,7 @@ const Header = () => {
               </svg>
             </button>
             <div className='p-2 hover:border-b'>
-              <Link to="/"><img src={Logo} alt="Amazon Logo" className='w-28' /></Link>
+              <Link to="/"><img src={Logo} alt="Amazon Logo" className='w-24 mt-2' /></Link>
             </div>
           </div>
           <div className='hidden lg:block text-center paddingheader hover:border-b'>
@@ -75,7 +75,7 @@ const Header = () => {
                 ))}
               </select>
             </button>
-            <input type="text" className='p-2 h-full flex-grow text-black' placeholder='Search Amazon.in' />
+            <input type="text" className='p-2 h-full flex-grow font-semibold text-black' placeholder='Search Amazon.in' />
             <button className='p-2 bg-orange-400 h-11 w-14'>
               <i className="fa-solid fa-magnifying-glass text-black"></i>
             </button>
@@ -119,6 +119,14 @@ const Header = () => {
               </Link>
             </button>
           </div>
+          <div className="hidden lg:block ml-4 me-1 paddingheader hover:border-b">
+            <button className='text-left'>
+              <Link className='hover:text-white' to="/orders">
+                <span className="text-xs hidden lg:inline-block lg:text-xl">Cart</span>
+                <button><i className="fa-solid fa-cart-shopping w-6 lg:w-8"></i></button>
+              </Link>
+            </button>
+          </div>
           <div className="p-2 flex items-center lg:hidden">
             <div className="relative inline-flex items-center">
               {user ? (
@@ -143,7 +151,7 @@ const Header = () => {
             <span className="text-xs hidden lg:inline-block lg:text-xl">Cart</span>
           </div>
           <div className='sm:hidden inline-flex items-center bg-gray-200 rounded-md mx-auto overflow-hidden h-11 w-full max-w-3xl'>
-            <input type="text" className='p-2 h-full w-full flex-grow' placeholder='Search Amazon.in' />
+            <input type="text" className='p-2 h-full w-full text-black fw-semibold flex-grow' placeholder='Search Amazon.in' />
             <button className='p-2 bg-orange-400 h-11 w-14'>
               <i className="fa-solid fa-magnifying-glass text-black"></i>
             </button>
@@ -152,13 +160,13 @@ const Header = () => {
       </header>
 
       {isOpen && (
-        <div className="w-64 lg:hidden absolute top-0 bg-gray-100 text-black p-2">
+        <div className="w-64 lg:hidden z-50 fixed top-0 bg-gray-700 text-white h-full pt-4 p-6 ">
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="text-dark focus:outline-none lg:hidden"
           >
             <svg
-              className="h-6 w-6"
+              className="h-6 w-6 text-white"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -172,10 +180,13 @@ const Header = () => {
               />
             </svg>
           </button>
-          <Link to="/" className="block py-1 border-b">Home</Link>
-          <Link to="/about" className="block py-1 border-b">About</Link>
-          <Link to="/services" className="block py-1 border-b">Services</Link>
-          <Link to="/contact" className="block py-1">Contact</Link>
+          <br />
+          <b className='border-b'>All Category</b>
+          {categories.map((category, index) => (
+            <Link to={`/${category}`} key={index} className="block py-2 hover:cursor-pointer">
+              {category}
+            </Link>
+          ))}
         </div>
       )}
     </>
